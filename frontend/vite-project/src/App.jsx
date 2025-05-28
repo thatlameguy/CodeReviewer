@@ -42,7 +42,8 @@ function App() {
   async function reviewCode() {
     setLoading(true);
     try {
-      const response = await axios.post('http://localhost:3000/ai/get-review', { 
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+      const response = await axios.post(`${apiUrl}/ai/get-review`, { 
         code,
         language // Send language info to the backend
       });
